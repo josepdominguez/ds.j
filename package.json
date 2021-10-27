@@ -1,0 +1,21 @@
+{
+  "name": "@ds.e/core",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "husky": "4.2.3",
+    "lerna": "^4.0.0"
+  },
+  "private": true,
+  "privateComments": "private true is Used to specify that this parent package is not to be published",
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "playgrounds/*"
+    ]
+  },
+  "scripts": {
+    "build": "yarn lerna run build"
+  }
+}
