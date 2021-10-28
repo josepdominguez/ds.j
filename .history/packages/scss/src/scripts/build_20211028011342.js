@@ -39,7 +39,7 @@ const compile = (path, fileName) => {
     )
 }
 
-compile('src/global.scss', 'src/lib/global.css')
+// compile('src/global.scss', 'src/lib/global.css')
 
 console.log(getComponents())
 getComponents().forEach(component => {

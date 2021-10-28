@@ -1,7 +1,6 @@
 const Fs = require('fs')
 const Path = require('path')
 const Sass = require('node-sass')
-const { compileFunction } = require('vm')
 
 const getComponents = () => {
     let allComponents = []
@@ -9,23 +8,12 @@ const getComponents = () => {
     const types = ['atoms', 'molecules', 'organisms']
 
     types.forEach(type => {
-        const allFiles = Fs.readdirSync(`src/${type}`).map(file => ({
-            input: `src/${type}/${file}`,
-            output: `src/lib/${file.slice(0, -4) + 'css'}`
-        }))
-        allComponents = [
-            ...allComponents,
-            ...allFiles
-        ]
+        const allFiles = Fs.readdirSync(`src/${type}`)
     })
-
-    return allComponents
-
-    
 }
 
 const compile = (path, fileName) => {
-    const result = Sass.renderSync({
+    Sass.renderSync({
         data: Fs.readFileSync(
             Path.resolve(path)
         ).toString(),
@@ -41,7 +29,3 @@ const compile = (path, fileName) => {
 
 compile('src/global.scss', 'src/lib/global.css')
 
-console.log(getComponents())
-getComponents().forEach(component => {
-    compile(component.input, component.output)
-})

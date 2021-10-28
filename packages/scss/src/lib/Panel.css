@@ -1,0 +1,4 @@
+.dse-panel--container {
+  display: flex;
+  position: absolute;
+}
