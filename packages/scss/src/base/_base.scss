@@ -1,7 +1,12 @@
 :root {
   --dse-btn-primary-color: #ededed;
+  --dse-form-bg-color: white;
+  --dse-form-bg-option-selected: green;
+  --dse-form-color-option-selected: white;
+  --dse-form-bg-color-hover: #f0f0f0;
+  --dse-form-border-color:#f0f0f0;
 }
 
 body {
-  background-color: #dadada;
+  background-color: white;
 }
