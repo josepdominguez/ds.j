@@ -28,3 +28,6 @@ To make the packages public for Lerna:
   }
   
 Playground no need to be public, just for testing
+
+To send to NPM:
+npm login
