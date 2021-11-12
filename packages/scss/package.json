@@ -1,9 +1,12 @@
 {
   "name": "@ds.j/scss",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "main": "index.js",
   "license": "MIT",
-  "files": ["lib", "src"],
+  "files": [
+    "lib",
+    "src"
+  ],
   "devDependencies": {
     "husky": "^7.0.4",
     "lint-staged": "^11.2.6",

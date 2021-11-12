@@ -1,9 +1,11 @@
 {
   "name": "@ds.j/foundation",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "main": "lib/index.js",
   "license": "MIT",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "devDependencies": {
     "@babel/preset-env": "^7.16.0",
     "@babel/preset-typescript": "^7.16.0",

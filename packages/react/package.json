@@ -1,9 +1,11 @@
 {
   "name": "@ds.j/react",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "main": "lib/index.js",
   "license": "MIT",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "dependencies": {
     "react": "^17.0.2"
   },
