@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Color, Button, Text, Margin, Select } from '@ds.e/react'
+import { Color, Button, Text, Margin, Select } from '@ds.j/react'
 
-import '@ds.e/scss/lib/Utilities.css'
-import '@ds.e/scss/lib/Text.css'
-import '@ds.e/scss/lib/Margin.css'
-import '@ds.e/scss/lib/Select.css'
-import '@ds.e/scss/lib/global.css'
+import '@ds.j/scss/lib/Utilities.css'
+import '@ds.j/scss/lib/Text.css'
+import '@ds.j/scss/lib/Margin.css'
+import '@ds.j/scss/lib/Select.css'
+import '@ds.j/scss/lib/global.css'
 
 const options = [
     {

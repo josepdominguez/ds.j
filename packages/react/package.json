@@ -1,5 +1,5 @@
 {
-  "name": "@ds.e/react",
+  "name": "@ds.j/react",
   "version": "0.2.0",
   "main": "lib/index.js",
   "license": "MIT",
@@ -38,5 +38,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "784e016b2092d84e5b3b70836560d49bdee5a0fa"
 }

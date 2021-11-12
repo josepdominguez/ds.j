@@ -5,10 +5,10 @@ import Select from './Select'
 import { withA11y } from '@storybook/addon-a11y'
 
 // css
-import '@ds.e/scss/lib/Utilities.css'
-import '@ds.e/scss/lib/Margin.css'
-import '@ds.e/scss/lib/Select.css'
-import '@ds.e/scss/lib/global.css'
+import '@ds.j/scss/lib/Utilities.css'
+import '@ds.j/scss/lib/Margin.css'
+import '@ds.j/scss/lib/Select.css'
+import '@ds.j/scss/lib/global.css'
 
 const options = [
     {

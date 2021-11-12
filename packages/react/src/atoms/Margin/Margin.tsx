@@ -1,7 +1,7 @@
 import React from 'react'
-import { Spacing } from '@ds.e/foundation'
+import { Spacing } from '@ds.j/foundation'
 
-import '@ds.e/scss/lib/Utilities.css'
+import '@ds.j/scss/lib/Utilities.css'
 
 interface MarginProps {
     space?: keyof typeof Spacing,

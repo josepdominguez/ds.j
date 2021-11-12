@@ -15,5 +15,5 @@ export default {
     },
     plugins: [Ts()], // Compiles the Typescript
     preserveModules: true,
-    external: ['react', '@ds.e/foundation']
+    external: ['react', '@ds.j/foundation']
 }
