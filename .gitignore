@@ -49,3 +49,4 @@ playgrounds
 packages/foundation/src/__tests__
 packages/react/src/molecules/Select/__snapshots__
 packages/react/storybook-static
+packages/react/lib
