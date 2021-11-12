@@ -1,0 +1,16 @@
+{
+  "name": "@ds.e/scss",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.4.1",
+    "stylelint": "^14.0.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-sass-guidelines": "^8.0.0",
+    "stylelint-prettier": "^1.2.0"
+  },
+  "scripts":{
+    "lint": "stylelint './**/*.scss'"
+  }
+}

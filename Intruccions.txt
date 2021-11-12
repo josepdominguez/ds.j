@@ -1,0 +1,33 @@
+ For the csaes it fails to start:
+ yarn start-storybook --no-manager-cache
+ 
+
+To make storybook needs to compile typescript into stories it can understand (also adds webpack, etc):
+
+(in packages/react folder)
+yarn add --dev @storybook/preset-typescript
+
+Storybook needs babel-loader, also in packages/react
+yarn add --dev babel-loader
+
+To see the source code:
+yarn add --dev @storybook/addon-storysource
+
+To add the knobs
+yarn add --dev @storybook/addon-knobs
+
+To check accessibility:
+yarn add --dev @storybook/addon-a11y
+
+
+Normally we would use yarn publish (or some like that) but in this case we have a monorepo with multiple packages
+
+To make the packages public for Lerna:
+"publishConfig": {
+    "access": "public"
+  }
+  
+Playground no need to be public, just for testing
+
+To send to NPM:
+npm login

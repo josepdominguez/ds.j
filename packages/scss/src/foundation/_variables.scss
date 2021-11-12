@@ -1,0 +1,35 @@
+
+
+$spacing: (
+    none: 0rem,
+    xxxs: 0.25rem,
+    // 4px
+    xxs: 0.5rem,
+    // 8px
+    xs: 0.75rem,
+    // 12px
+    sm: 1rem,
+    // 16px
+    md: 1.5rem,
+    // 24px
+    lg: 2rem,
+    // 32px
+    xl: 2rem,
+    // 48px
+    xxl: 4.5rem,
+    // 72px
+    xxxl: 6rem
+    // 96px
+) !default;
+
+$fs: (
+    xs: 0.8rem,
+    sm: 0.9rem,
+    base: 1rem,
+    lg: 1.25rem,
+    xl: 2rem
+) !default;
+
+$shadows: (
+    base: 0px 4px 11px rgba(157, 157, 157, 0.21)
+)

@@ -1,0 +1,19 @@
+{
+  "name": "monorepo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "private": true,
+  "privateComments": "private true is Used to specify that this parent package is not to be published",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "build": "yarn lerna run build"
+  }
+}
