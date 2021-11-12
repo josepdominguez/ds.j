@@ -4,7 +4,9 @@ import Text from '../../atoms/Text'
 const KEY_CODES = {
     ENTER: 13,
     SPACE: 32,
-    DOWN_ARROW: 40
+    DOWN_ARROW: 40,
+    UP_ARROW: 38,
+    ESC: 27
 }
 
 interface SelectOption {
@@ -22,7 +24,27 @@ interface SelectProps {
     onOptionSelected?: (option: SelectOption, optionIndex: number) => void
     options?: SelectOption[]
     label?: string,
-    renderOption: (props: RenderOptionProps) => React.ReactNode
+    renderOption?: (props: RenderOptionProps) => React.ReactNode
+}
+
+const getNextOptionIndex = (currentIndex: number|null, options: Array<SelectOption>) => {
+    if (currentIndex === null) {
+        return 0
+    }
+    if (currentIndex === options.length -1) {
+        return 0
+    }
+    return currentIndex + 1
+}
+
+const getPreviousOptionIndex = (currentIndex: number|null, options: Array<SelectOption>) => {
+    if (currentIndex === null) {
+        return 0
+    }
+    if (currentIndex === 0) {
+        return options.length - 1
+    }
+    return currentIndex - 1
 }
 
 const Select: React.FC<SelectProps> = ({ options = [], label = 'Please select an option', onOptionSelected: handler, renderOption }) => {
@@ -58,7 +80,7 @@ const Select: React.FC<SelectProps> = ({ options = [], label = 'Please select an
         selectedOption = options[selectedIndex]
     }
 
-    const highlightItem = (optionIndex: number|null) => {
+    const highlightOption = (optionIndex: number|null) => {
         setHighlightedIndex(optionIndex)
         // if (optionIndex !== null) {
         //     const ref = optionRefs[optionIndex]
@@ -69,16 +91,14 @@ const Select: React.FC<SelectProps> = ({ options = [], label = 'Please select an
         
     }
     const onButtonKeyDown: KeyboardEventHandler = (event) => {
-        console.log('hey')
         event.preventDefault()
         
         if ([KEY_CODES.ENTER, KEY_CODES.SPACE, KEY_CODES.DOWN_ARROW].includes(event.keyCode)) {
             setIsOpen(true)
 
             // set focus on the list item
-            highlightItem(0)
+            highlightOption(0)
         }
-
     }
 
     useEffect(() => {
@@ -93,17 +113,36 @@ const Select: React.FC<SelectProps> = ({ options = [], label = 'Please select an
                 ref.current.focus()
             }
         }
-    }, [isOpen])
+    }, [isOpen, highlightedIndex])
+
+    const onOptionKeyDown: KeyboardEventHandler = (event) => {
+        if (event.keyCode === KEY_CODES.ESC) {
+            setIsOpen(false)
+            return
+        }
+
+        if (event.keyCode === KEY_CODES.DOWN_ARROW) {
+            highlightOption(getNextOptionIndex(highlightedIndex, options))
+        }
+
+        if (event.keyCode === KEY_CODES.UP_ARROW) {
+            highlightOption(getPreviousOptionIndex(highlightedIndex, options))
+        }
+
+        if (event.keyCode === KEY_CODES.ENTER) {
+            onOptionSelected(options[highlightedIndex!], highlightedIndex!)
+        }
+    }
 
     return <div className='dse-select'>
-        <button onKeyDown={onButtonKeyDown} aria-controls='dse-select-list' aria-haspopup={true} aria-expanded={isOpen ? true : undefined} ref={labelRef} className='dse-select__label' onClick={() => onLabelClick()}>
+        <button data-testid='DseSelectButton' onKeyDown={onButtonKeyDown} aria-controls='dse-select-list' aria-haspopup={true} aria-expanded={isOpen ? true : undefined} ref={labelRef} className='dse-select__label' onClick={() => onLabelClick()}>
             <Text>{selectedOption === null ? label : selectedOption.label}</Text>
             <svg className={`dse-select__caret ${isOpen ? 'dse-select__caret--open' : 'dse-select__caret--closed'}`} width='1rem' height='1rem' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
         </button>
-        {isOpen ?
-            <ul role='menu' id='dse-select-list' style={{ top: overlayTop }} className='dse-select__overlay'>
+        {
+            <ul role='menu' id='dse-select-list' style={{ top: overlayTop }} className={`dse-select__overlay ${isOpen ? 'dse-select__overlay--open' : ''}`}>
                 {options.map((option, optionIndex) => {
                     const isSelected = selectedIndex === optionIndex
                     const isHighlighted = highlightedIndex === optionIndex
@@ -111,15 +150,18 @@ const Select: React.FC<SelectProps> = ({ options = [], label = 'Please select an
                     const ref = optionRefs[optionIndex]
 
                     const renderOptionProps = {
-                        ref,
                         option,
                         isSelected,
                         getOptionRecommendedProps: (overrideProps = {}) => {
                             return {
                                 ref,
-                                tabindex: isHighlighted ? -1 : 0,
-                                onMouseEnter: () => highlightItem(optionIndex),
-                                onMouseLeave: () => highlightItem(null),
+                                role: 'menuitemradio',
+                                'aria-label': option.label,
+                                'aria-checked': isSelected ? true : undefined,
+                                onKeyDown: onOptionKeyDown,
+                                tabIndex: isHighlighted ? -1 : 0,
+                                onMouseEnter: () => highlightOption(optionIndex),
+                                onMouseLeave: () => highlightOption(null),
                                 className: `
                                     dse-select__option
                                     ${isSelected ? 'dse-select__option--selected' : ''}
@@ -146,7 +188,7 @@ const Select: React.FC<SelectProps> = ({ options = [], label = 'Please select an
                         </svg> : ''}
                     </li>
                 })}
-            </ul> : null}
+            </ul>}
 
     </div>
 }
