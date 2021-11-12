@@ -44,7 +44,6 @@ node_modules
 .next/
 .cache
 dist
-playgrounds
 
 packages/foundation/src/__tests__
 packages/react/src/molecules/Select/__snapshots__
