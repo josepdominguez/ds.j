@@ -1,6 +1,6 @@
 {
   "name": "@ds.j/scss",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "main": "index.js",
   "license": "MIT",
   "files": [
