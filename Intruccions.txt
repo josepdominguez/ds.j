@@ -37,3 +37,6 @@ For conventional logs in the commits (??):
 yarn add --dev commitizen cs-conventional-changelog -W
 
 -W means it's package for the top route, not for the "workspace"
+
+For linting during commit:
+yarn add --dev commitlint/cli @commitlint/config-conventional husky -W
