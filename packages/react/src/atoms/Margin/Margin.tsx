@@ -3,7 +3,7 @@ import { Spacing } from '@ds.j/foundation'
 
 import '@ds.j/scss/lib/Utilities.css'
 
-interface MarginProps {
+export interface MarginProps {
     space?: keyof typeof Spacing,
     left?: boolean,
     right?: boolean,
