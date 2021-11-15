@@ -1,0 +1,25 @@
+name: Build & Test CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+
+#builds is the name of the job. It could be anything.
+#action/checkout@v2 --> github is going to call this action called checkout
+#which will clone the repository in the ubuntu system that was just set up.
+jobs:
+  builds:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/checkout@v2
+      - name: Install dependencies
+        run: yarn
+      - name: Build packages
+        run: yarn build
+      - name: Automated tests
+        run: yarn test
