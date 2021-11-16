@@ -28,7 +28,7 @@
     "test": "yarn lerna run test",
     "publish": "yarn test && yarn build && yarn lerna publish",
     "commit": "yarn git-cz",
-    "test:chromatic": "yarn lerna run test:chromatic=\"$CHROMATIC_PROJECT_TOKEN\""
+    "test:chromatic": "yarn lerna run test:chromatic"
   },
   "config": {
     "commitizen": {
