@@ -46,5 +46,4 @@ node_modules
 dist
 
 packages/react/src/molecules/Select/__snapshots__
-packages/react/storybook-static
 packages/react/lib
