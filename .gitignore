@@ -45,7 +45,6 @@ node_modules
 .cache
 dist
 
-packages/foundation/src
 packages/react/src/molecules/Select/__snapshots__
 packages/react/storybook-static
 packages/react/lib
